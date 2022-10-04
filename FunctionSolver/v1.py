@@ -21,14 +21,11 @@ def GetDiviseurs(n) :
 
 def CalculFonction(f,n) :
     somme = 0
-    c = len(f) - 1
+    c = len(f)
     for x in f : 
-        print(x)
-        print(n)
-        somme += x*(n**c)
         c -= 1
-        if c == 0 :
-            break
+        somme += x*(n**c)
+    print(somme)
     return somme
 
 Fonction = [3.0,-5.0,1.0,-6.0] #DemandeFonctionInitial()
@@ -36,11 +33,12 @@ ListeRésultat = []
 while len(Fonction) != 3 :
     DernierNombre = Fonction[len(Fonction)-1]
     DiviseursDernierNombre = GetDiviseurs(DernierNombre)
-    for n in DiviseursDernierNombre :
-        if CalculFonction(Fonction,n) == 0 :
-            ListeRésultat.append(n)
-            Diviseurs0 = n
+    for nb in DiviseursDernierNombre :
+        if CalculFonction(Fonction,nb) == 0 :
+            ListeRésultat.append(nb)
+            Diviseurs0 = nb
             print(Diviseurs0)
+            break
     n = 0
     for x in range(len(Fonction)) :
         n = n*Diviseurs0
