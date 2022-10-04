@@ -9,29 +9,33 @@ def DemandeFonctionInitial() :
         c += 1
     del NombresFonction[0]
     NombresFonction = list(map(float, NombresFonction))
-    print(NombresFonction)
     return NombresFonction
 
 def GetDiviseurs(n) :
     ListeDiviseurs = []
-    for x in range(1,int(n)+1) :
+    for x in range(1,int(abs(n))+1) :
         if n%x == 0 : 
-            ListeDiviseurs.append(n)
-            ListeDiviseurs.append(-n)
+            ListeDiviseurs.append(x)
+            ListeDiviseurs.append(-x)
     return ListeDiviseurs
 
 def CalculFonction(f,n) :
-    c = 0
-    somme = len(f) - 1
+    somme = 0
+    c = len(f) - 1
     for x in f : 
-        somme += n**c * x
+        print(x)
+        print(n)
+        somme += x*(n**c)
         c -= 1
+        if c == 0 :
+            break
     return somme
 
-Fonction = DemandeFonctionInitial()
+Fonction = [3.0,-5.0,1.0,-6.0] #DemandeFonctionInitial()
 ListeRésultat = []
 while len(Fonction) != 3 :
-    DiviseursDernierNombre = GetDiviseurs(Fonction[-1])
+    DernierNombre = Fonction[len(Fonction)-1]
+    DiviseursDernierNombre = GetDiviseurs(DernierNombre)
     for n in DiviseursDernierNombre :
         if CalculFonction(Fonction,n) == 0 :
             ListeRésultat.append(n)
