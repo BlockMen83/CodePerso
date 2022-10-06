@@ -29,6 +29,7 @@ def CalculFonction(f,n) :
     return somme
 
 Fonction = [3.0,-5.0,1.0,-6.0] #DemandeFonctionInitial()
+Degré_Actuel = len(Fonction) -1
 ListeRésultat = []
 while len(Fonction) != 3 :
     DernierNombre = Fonction[len(Fonction)-1]
@@ -44,7 +45,9 @@ while len(Fonction) != 3 :
         n = n*Diviseurs0
         n += Fonction[x]
         Fonction.insert(x,n)
-    Fonction = Fonction[:-1]
+    for x in range(Degré_Actuel+2) :
+        Fonction = Fonction[:-1]
+    
 
     
 
